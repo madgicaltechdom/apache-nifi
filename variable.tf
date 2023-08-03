@@ -1,57 +1,47 @@
 variable "aws-region" {
   description = "The AWS region"
-  default     = "us-east-2"
+  default     = "ap-south-1"
 }
 variable "access_key" {
   description = "value"
   default     = ""
-
 }
-
-
 variable "secret_key" {
   description = "value"
   default     = ""
-} 
-
-variable "instance-ami" {
-  description = "The AMI (Amazon Machine Image) that identifies the instance"
-  default     = "ami-097f31fd706d98941"
 }
-# variable "vpc_security_group_ids" {
-#    description = "The instance type to be used"
-#    default     = "sg-02c878fd84c4f6de9"
-#  }
- variable "vpc_security_group_ids" {
-  type = map(list(string))
-  default = {
-    "default"     = ["sg-02c878fd84c4f6de9"]
-    
-  }
+variable "instance-type" {
+    description= "value"
+    default= "t2.medium"
 }
 variable "subnet_id" {
-  description = "The instance type to be used"
-  default     = "subnet-f70f4dbb"
+    description= "value"
+    default="subnet-0f87a45fe905355f1"
 }
-
-variable "instance-type" {
-  description = "The instance type to be used"
-  default     = "t3.small"
+variable "instance-ami" {
+ description=  "value"
+ default= "ami-08e5424edfe926b43"
 }
-
-variable "instance-key-name" {
-  description = "The name of the SSH key to associate to the instance. Note that the key must exist already."
-  default     = "Saarthi-Compile-Code"
+variable "instance-key-name"{
+ description= "name of key"
+ default = "nowigence-key"
 }
-
-
-variable "instance-tag-name" {
-  description = "instance-tag-name"
-  default     = "Production node server_kaumudi"
+variable "spot_price" {
+  default = "0.03"
 }
-
-variable "instance-associate-public-ip" {
-  description = "Defines if the EC2 instance has a public IP address."
-  default     = "true"
+variable "spot_type" {
+  description = "value"
+  default     = "persistent"
 }
-
+variable "snapshot_without_reboot" {
+  default = "true"
+}
+variable "instance-tag-name"{
+    description= "name of machine"
+    default= "nowigence"
+}
+ variable "vpc_security_group_ids"{
+     type = list(string)
+    description= "name of vpc"
+    default = ["vpc-017092b3559f639ed"]
+ }
