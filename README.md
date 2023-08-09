@@ -11,7 +11,7 @@ This repository contains the necessary files and instructions for deploying an E
 
 ## Steps to run this code
 
-Step-by-step user guide [video]().
+Step-by-step user guide [video](https://drive.google.com/file/d/1fRf1p3izDl-JJuWF7npu99SSbUkXNFl2/view?usp=drive_link).
 
 1. Clone this repository to your local machine:
 
