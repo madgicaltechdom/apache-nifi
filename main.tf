@@ -38,11 +38,6 @@ resource "aws_spot_instance_request" "instance" {
   spot_price             = var.spot_price
   vpc_security_group_ids = [aws_security_group.webserver-security-group.id]
   spot_type              = var.spot_type
-  ebs_block_device {
-    device_name = "/dev/xvda"
-    volume_type = "gp3"
-    volume_size = 16 # Replace with the desired volume size in GB
-  }
   tags = {
     Name = "${var.instance_tag_name}"
   }
