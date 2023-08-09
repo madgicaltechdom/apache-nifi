@@ -49,9 +49,15 @@ variable "secret_key" {
 
 7. Run `terraform init` to initialize the Terraform project.
 
-6. Run `terraform plan` to see the changes that Terraform will make.
+8. Run `terraform plan` to see the changes that Terraform will make.
 
-7. Run `terraform apply` to create the Ubuntu machine.
+9. Run `terraform apply` to create the Ubuntu machine.
+
+10. Connect to the VMs using the SSH key.
+
+```
+ssh -i <private key path> user_name@public_ip
+```
 
 ## Clean up
 
