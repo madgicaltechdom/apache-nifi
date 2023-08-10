@@ -30,12 +30,12 @@ variable "instance_ami" {
 
 variable "application_name" {
  description=  "machine name"
- default= "Nowigence"
+ default= ""
 }
 
 variable "instance_key_name"{
  description= "name of key"
- default = "nowigence-key"
+ default = ""
 }
 
 variable "spot_price" {
@@ -49,5 +49,5 @@ variable "spot_type" {
 
 variable "instance_tag_name"{
     description= "name of machine"
-    default= "nowigence"
+    default= ""
 }
