@@ -111,7 +111,7 @@ If you don't have the JAVA_HOME environment variable set, then you need to set i
 echo $JAVA_HOME
 ```
 
-7. Navigate to the nifi-1.23.0/conf/, open the nifi.properties file, search for the "web properties", and make changes in the port and host by running the below command(I am using Vim editor).
+7. Navigate to the nifi-1.23.0/conf/ directory, open the nifi.properties file, search for the "web properties", and make changes in the port and host by running the below command(I am using Vim editor).
 
 ```
 cd nifi-1.23.0/conf/
@@ -126,7 +126,7 @@ vi nifi.properties
 ./nifi.sh set-single-user-credentials <username> <password>
 ```
   
-9. Navigate to the nifi-1.23.0/bin/ and start Apache Nifi by running the below command:
+9. Navigate to the nifi-1.23.0/bin/ directory and start Apache Nifi by running the below command:
 
 ```
 cd nifi-1.23.0/bin/
@@ -149,7 +149,81 @@ cd nifi-1.23.0/bin/
 
 # How to install and set up the Nifi registry
 
+By following the below steps you can able to install and set up the Nifi registry.
 
+## Prerequisite:
 
+- Ubuntu machine with root access, 22 and 18080 ports.
+- You should have sudo or root access to run privileged commands.
+- You should have OpenJDK 11 installed on your Server.
+- You should have apt or apt-get, wget, and unzip utility installed in your Server.
+- GitHub account with one repo and GitHub token for versioned flows.
 
+1. SSH to the Ubuntu machine by running the below command and switch to the root user:
 
+```
+ssh -i <private key path> user_name@public_ip
+```
+
+2. Update your server by running the below command:
+   
+```
+apt update
+```
+
+3. Download Apache [Nifi 1.23.0 registry](https://archive.apache.org/dist/nifi/) using wget by running the below command:
+
+```
+wget https://archive.apache.org/dist/nifi/1.23.0/nifi-registry-1.23.0-bin.zip
+```
+
+4. Unzip the folder using unzip utility by running the below command:
+
+```
+unzip nifi-registry-1.23.0-bin.zip
+```
+
+5. Set the JAVA_HOME path by running the below command:
+
+```
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+```
+If you don't have the JAVA_HOME environment variable set, then you need to set it with the OpenJDK path. In my setup, it is on /usr/lib/jvm/java-11-openjdk-amd64/.
+
+6. Verify the path by running the below command:
+
+```
+echo $JAVA_HOME
+```
+
+7. Navigate to the nifi-registry-1.23.0/ directory and clone your versioned flows repo.
+
+8. Navigate to the nifi-registry-1.23.0/conf/ directory, open the providers.xml file, uncomment the flowPersistenceProvider block, and provide you GitHub details(username, token as password, repo link, origin, and storage directory name means your repo name) by running the below command(I am using Vim editor).
+
+```
+cd nifi-registry-1.23.0/conf/
+vi providers.xml
+```
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/16ef66a5-2a71-4524-95f7-273fb85d0ab2)
+  
+9. Navigate to the nifi-registry-1.23.0/bin/ directory and start the Apache Nifi registry by running the below command:
+
+```
+cd nifi-registry-1.23.0/bin/
+./nifi-registry.sh start
+```
+
+10. Check the status of Nifi by running the below command:
+
+```
+./nifi-registry.sh status
+```
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/556beba6-37e2-41c8-9b68-76b1f4b3f1f2)
+
+NOTE:- For checking the Nifi registry port navigate to the nifi-registry-1.23.0/conf/ directory and look at the nifi-registry.properties file. 
+
+## Reference
+
+I got information from this [article](https://www.cyberithub.com/easy-steps-to-install-apache-nifi-on-ubuntu-20-04/) and this [video](https://www.youtube.com/watch?v=kK7eVppg9Aw).
