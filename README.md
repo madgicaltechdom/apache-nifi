@@ -222,6 +222,10 @@ cd nifi-registry-1.23.0/bin/
 
 ![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/556beba6-37e2-41c8-9b68-76b1f4b3f1f2)
 
+11. Now, browse this URL: http://<YOUR_MACHINE_IP>:18080/nifi-registry you can see the page as shown below:
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/05d81283-14c2-45af-851a-34db72640588)
+
 NOTE:- For checking the Nifi registry port navigate to the nifi-registry-1.23.0/conf/ directory and look at the nifi-registry.properties file. 
 
 ## Reference
