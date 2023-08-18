@@ -74,6 +74,8 @@ By following the below steps you can able to install and set up the Nifi.
 - You should have OpenJDK 11 installed on your Server.
 - You should have apt or apt-get, wget, and unzip utility installed in your Server.
 
+## Steps for the configuration
+
 1. SSH to the Ubuntu machine by running the below command and switch to the root user:
 
 ```
@@ -147,6 +149,10 @@ cd nifi-1.23.0/bin/
 
 ![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/edf6478e-df80-408b-a88a-e7f3b441ce28)
 
+12. For setup of the Nifi settings click on the global menu then "Controller Settings".
+    
+13. Click on the "REGISTRY CLIENTs" the provide registry details.
+
 # How to install and set up the Nifi registry
 
 By following the below steps you can able to install and set up the Nifi registry.
@@ -158,6 +164,8 @@ By following the below steps you can able to install and set up the Nifi registr
 - You should have OpenJDK 11 installed on your Server.
 - You should have apt or apt-get, wget, and unzip utility installed in your Server.
 - GitHub account with one repo and GitHub token for versioned flows.
+
+## Steps for the configuration
 
 1. SSH to the Ubuntu machine by running the below command and switch to the root user:
 
