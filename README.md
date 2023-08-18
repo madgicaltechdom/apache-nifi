@@ -8,7 +8,6 @@ This repository contains the necessary files and instructions for deploying an E
 - Setup your AWS account [video](https://www.youtube.com/watch?v=XhW17g73fvY&t=357s)
 - Create IAM user with programmatic access  [video](https://www.youtube.com/watch?v=Xx_-IA9qnuI)
 
-
 ## Steps to run this code
 
 Step-by-step user guide [video](https://drive.google.com/file/d/1fRf1p3izDl-JJuWF7npu99SSbUkXNFl2/view?usp=drive_link).
@@ -62,6 +61,89 @@ ssh -i <private key path> user_name@public_ip
 ## Clean up
 
 To delete the machine that Terraform created, run `terraform destroy`.
+
+# How to install and set up the Nifi registry
+
+By following the below steps you can able to install and set up the Nifi registry.
+
+## Prerequisite:
+
+- Ubuntu machine with root access, 22 and 18080 ports.
+- You should have sudo or root access to run privileged commands.
+- You should have OpenJDK 11 installed on your Server.
+- You should have apt or apt-get, wget, and unzip utility installed in your Server.
+- GitHub account with one repo and GitHub token for versioned flows.
+
+## Steps for the configuration
+
+1. SSH to the Ubuntu machine by running the below command and switch to the root user:
+
+```
+ssh -i <private key path> user_name@public_ip
+```
+
+2. Update your server by running the below command:
+   
+```
+apt update
+```
+
+3. Download Apache [Nifi 1.23.0 registry](https://archive.apache.org/dist/nifi/) using wget by running the below command:
+
+```
+wget https://archive.apache.org/dist/nifi/1.23.0/nifi-registry-1.23.0-bin.zip
+```
+
+4. Unzip the folder using unzip utility by running the below command:
+
+```
+unzip nifi-registry-1.23.0-bin.zip
+```
+
+5. Set the JAVA_HOME path by running the below command:
+
+```
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+```
+If you don't have the JAVA_HOME environment variable set, then you need to set it with the OpenJDK path. In my setup, it is on /usr/lib/jvm/java-11-openjdk-amd64/.
+
+6. Verify the path by running the below command:
+
+```
+echo $JAVA_HOME
+```
+
+7. Navigate to the nifi-registry-1.23.0/ directory and clone your versioned flows repo.
+
+8. Navigate to the nifi-registry-1.23.0/conf/ directory, open the providers.xml file, uncomment the flowPersistenceProvider block, and provide you GitHub details(username, token as password, repo link, origin, and storage directory name means your repo name) by running the below command(I am using Vim editor).
+
+```
+cd nifi-registry-1.23.0/conf/
+vi providers.xml
+```
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/16ef66a5-2a71-4524-95f7-273fb85d0ab2)
+  
+9. Navigate to the nifi-registry-1.23.0/bin/ directory and start the Apache Nifi registry by running the below command:
+
+```
+cd nifi-registry-1.23.0/bin/
+./nifi-registry.sh start
+```
+
+10. Check the status of Nifi by running the below command:
+
+```
+./nifi-registry.sh status
+```
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/556beba6-37e2-41c8-9b68-76b1f4b3f1f2)
+
+11. Now, browse this URL: http://<YOUR_MACHINE_IP>:18080/nifi-registry you can see the page as shown below:
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/05d81283-14c2-45af-851a-34db72640588)
+
+NOTE:- For checking the Nifi registry port navigate to the nifi-registry-1.23.0/conf/ directory and look at the nifi-registry.properties file. 
 
 # How to install and set up the Nifi
 
@@ -156,89 +238,6 @@ cd nifi-1.23.0/bin/
 13. Click on the "REGISTRY CLIENTS" and then edit the registry client then "PROPERTIES" then provide registry details.
 
 ![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/7a631104-9c76-432a-973f-9ae8dfb62ba5)
-
-# How to install and set up the Nifi registry
-
-By following the below steps you can able to install and set up the Nifi registry.
-
-## Prerequisite:
-
-- Ubuntu machine with root access, 22 and 18080 ports.
-- You should have sudo or root access to run privileged commands.
-- You should have OpenJDK 11 installed on your Server.
-- You should have apt or apt-get, wget, and unzip utility installed in your Server.
-- GitHub account with one repo and GitHub token for versioned flows.
-
-## Steps for the configuration
-
-1. SSH to the Ubuntu machine by running the below command and switch to the root user:
-
-```
-ssh -i <private key path> user_name@public_ip
-```
-
-2. Update your server by running the below command:
-   
-```
-apt update
-```
-
-3. Download Apache [Nifi 1.23.0 registry](https://archive.apache.org/dist/nifi/) using wget by running the below command:
-
-```
-wget https://archive.apache.org/dist/nifi/1.23.0/nifi-registry-1.23.0-bin.zip
-```
-
-4. Unzip the folder using unzip utility by running the below command:
-
-```
-unzip nifi-registry-1.23.0-bin.zip
-```
-
-5. Set the JAVA_HOME path by running the below command:
-
-```
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-```
-If you don't have the JAVA_HOME environment variable set, then you need to set it with the OpenJDK path. In my setup, it is on /usr/lib/jvm/java-11-openjdk-amd64/.
-
-6. Verify the path by running the below command:
-
-```
-echo $JAVA_HOME
-```
-
-7. Navigate to the nifi-registry-1.23.0/ directory and clone your versioned flows repo.
-
-8. Navigate to the nifi-registry-1.23.0/conf/ directory, open the providers.xml file, uncomment the flowPersistenceProvider block, and provide you GitHub details(username, token as password, repo link, origin, and storage directory name means your repo name) by running the below command(I am using Vim editor).
-
-```
-cd nifi-registry-1.23.0/conf/
-vi providers.xml
-```
-
-![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/16ef66a5-2a71-4524-95f7-273fb85d0ab2)
-  
-9. Navigate to the nifi-registry-1.23.0/bin/ directory and start the Apache Nifi registry by running the below command:
-
-```
-cd nifi-registry-1.23.0/bin/
-./nifi-registry.sh start
-```
-
-10. Check the status of Nifi by running the below command:
-
-```
-./nifi-registry.sh status
-```
-
-![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/556beba6-37e2-41c8-9b68-76b1f4b3f1f2)
-
-11. Now, browse this URL: http://<YOUR_MACHINE_IP>:18080/nifi-registry you can see the page as shown below:
-
-![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/05d81283-14c2-45af-851a-34db72640588)
-
-NOTE:- For checking the Nifi registry port navigate to the nifi-registry-1.23.0/conf/ directory and look at the nifi-registry.properties file. 
 
 ## Reference
 
