@@ -150,8 +150,12 @@ cd nifi-1.23.0/bin/
 ![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/edf6478e-df80-408b-a88a-e7f3b441ce28)
 
 12. For setup of the Nifi settings click on the global menu then "Controller Settings".
-    
-13. Click on the "REGISTRY CLIENTs" the provide registry details.
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/9cf553a0-396d-450e-a5e2-f444bf58eea4)
+
+13. Click on the "REGISTRY CLIENTS" and then edit the registry client then "PROPERTIES" then provide registry details.
+
+![image](https://github.com/madgicaltechdom/nowigence/assets/101810595/7a631104-9c76-432a-973f-9ae8dfb62ba5)
 
 # How to install and set up the Nifi registry
 
