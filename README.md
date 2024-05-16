@@ -15,7 +15,7 @@ Step-by-step user guide [video](https://drive.google.com/file/d/1fRf1p3izDl-JJuW
 1. Clone this repository to your local machine:
 
 ```
-git clone https://github.com/madgicaltechdom/nowigence.git
+git clone https://github.com/madgicaltechdom/apache-nifi.git
 ```
 
 2. Navigate to the nowigence directory.
